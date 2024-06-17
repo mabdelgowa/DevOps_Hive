@@ -1,5 +1,5 @@
 def print_version():
-    print("current version is 1.0.0")
+    print("current version is v0.0.1")
 
 
 print_version()
