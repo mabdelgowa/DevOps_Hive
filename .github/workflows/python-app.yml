@@ -32,6 +32,8 @@ jobs:
         pip install uvicorn
         pip install pytest
         pip install requests
+        pip install fastapi.testclient
+        pip install prometheus_client
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
@@ -105,7 +107,7 @@ jobs:
       # Force to fail step after specific time.
       timeout-minutes: 5
       with:
-          projectBaseDir: main
+          projectBaseDir: mabdelgowa/DevOps_Hive
       env:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
