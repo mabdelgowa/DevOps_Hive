@@ -1,6 +1,7 @@
 import requests
 import prometheus_client
-from fastapi import FastAPI, Response
+from fastapi import FastAPI, Response , status
+from fastapi.testclient import TestClient
 app = FastAPI()
 from datetime import datetime
 
@@ -29,7 +30,7 @@ def read_root():
     return response, f'difference in time between mesurement now (hours) = {difference_in_time_between_mesurement_now}', status
 @app.get("/version")
 def print_version():
-    return "current version is v0.0.1"
+    return "current version is v0.3.0"
 
 @app.get("/metrics")
 def send_metrics():
@@ -40,3 +41,15 @@ def send_metrics():
 
 
 
+client = TestClient(app)
+def test_read_main():
+    response = client.get("/temperature")
+    assert response.status_code == 200
+    response = client.get("/version")
+    assert response.status_code == status.HTTP_200_OK
+    assert response.text == '"current version is v0.3.0"'
+    response = client.get("/metrics")
+    assert response.status_code == status.HTTP_200_OK
+
+
+test_read_main()
