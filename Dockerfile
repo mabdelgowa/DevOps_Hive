@@ -4,13 +4,15 @@ WORKDIR /root/Desktop/
 
 RUN pip install fastapi
 RUN pip install uvicorn
+RUN pip install requests
 
-EXPOSE 8000
 
-ENTRYPOINT [ "uvicorn", "main:app", "--reload" ]
+EXPOSE 80
+
+#ENTRYPOINT [ "uvicorn", "main:app" ]
 
  
 COPY main.py ./
 
 
-CMD [ "python", "./main.py" ]
+CMD [ "fastapi", "run", "./main.py", "--port", "80" ]
