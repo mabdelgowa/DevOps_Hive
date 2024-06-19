@@ -98,7 +98,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: repo1/
+          projectBaseDir: /github/workspace/
       
 
 
