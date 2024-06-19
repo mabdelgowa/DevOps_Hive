@@ -1,19 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName }}
+  name: my-deployment
+  labels:
+    app: myapp
 spec:
-  replicas: {{ .Values.appReplicas }}
+  replicas: 3
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: myapp
   template:
-    matadata:
+    metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: myapp
     spec:
       containers:
-        - name: {{ .Values.appName }}
-          image: "{{ .Values.appImage }}:{{ .Values.appVersion }}"
-          ports:
-            - containerPort: {{ .Values.containerPort }}
+      - name: myapp
+        image: docker.io/mahmoudabdelgowad/devops_hive:latest
+        ports:
+        - containerPort: 80
