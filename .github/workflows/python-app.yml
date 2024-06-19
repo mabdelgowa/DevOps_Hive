@@ -97,8 +97,8 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #  with:
-       #   projectBaseDir: /github/mabdelgowa/DevOps_Hive
+        with:
+          projectBaseDir: repo:mabdelgowa/DevOps_Hive 
       
 
 
