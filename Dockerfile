@@ -1,6 +1,13 @@
 FROM python:latest
 
-WORKDIR ~/Desktop
+WORKDIR /root/Desktop/
+
+RUN pip install fastapi
+RUN pip install uvicorn
+
+EXPOSE 8000
+
+ENTRYPOINT [ "uvicorn", "main:app", "--reload" ]
 
  
 COPY main.py ./
