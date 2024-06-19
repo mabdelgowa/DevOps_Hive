@@ -98,7 +98,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: https://github.com/mabdelgowa/DevOps_Hive.git
+          projectBaseDir: DevOps_Hive/.
       
 
 
