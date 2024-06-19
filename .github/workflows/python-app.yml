@@ -26,9 +26,8 @@ jobs:
     - name: Install dependencies
     
       run: |
-        pip install prometheus-client
         python -m pip install --upgrade pip
-        
+        pip install prometheus-client
         pip install flake8 pytest
         pip install fastapi
         pip install uvicorn
@@ -59,6 +58,7 @@ jobs:
         pip install pytest
         pip install fastapi
         pip install requests
+        pip install prometheus-client
     - name: Test with pytest
       run: |
         pytest ./unit_tests.py
@@ -98,7 +98,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
-          projectBaseDir: /github/workspace/DevOps_Hive
+          projectBaseDir: https://github.com/mabdelgowa/DevOps_Hive.git
       
 
 
