@@ -1,6 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
+
 name: Python application
 
 on:
@@ -13,6 +14,18 @@ permissions:
   contents: read
 
 jobs:
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   build:
 
     runs-on: ubuntu-latest
@@ -27,11 +40,13 @@ jobs:
     
       run: |
         python -m pip install --upgrade pip
+        pip install prometheus-client
         pip install flake8 pytest
         pip install fastapi
         pip install uvicorn
         pip install pytest
         pip install requests
+        
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
@@ -47,6 +62,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
+      if: contains(github.event.head_commit.message, 'build')
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
@@ -56,6 +72,7 @@ jobs:
         pip install pytest
         pip install fastapi
         pip install requests
+        pip install prometheus-client
     - name: Test with pytest
       run: |
         pytest ./unit_tests.py
@@ -66,6 +83,7 @@ jobs:
     steps:
     -
         name: Set up QEMU
+        if: contains(github.event.head_commit.message, 'build')
         uses: docker/setup-qemu-action@v3
     -
         name: Set up Docker Buildx
@@ -78,39 +96,34 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
         name: Build and push
+        if: contains(github.event.head_commit.message, 'build')
         uses: docker/build-push-action@v6
         with:
           push: true
           tags: mahmoudabdelgowad/devops_hive:latest 
-         
-  sonarqube:
+
+
+
+
+  terrascan_job:
     runs-on: ubuntu-latest
+    name: terrascan-action
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Run Terrascan
+      id: terrascan
+      uses: tenable/terrascan-action@main
       with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting.
-        fetch-depth: 0
+        iac_type: 'k8s'
+        iac_version: 'v1'
+        policy_type: 'k8s'
+        only_warn: true
+        non_recursive: false
+         
 
-    # Triggering SonarQube analysis as results of it are required by Quality Gate check.
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-    # Check the Quality Gate status.
-    - name: SonarQube Quality Gate check
-      id: sonarqube-quality-gate-check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      # Force to fail step after specific time.
-      timeout-minutes: 5
-      env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-       SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} #OPTIONAL
 
-    # Optionally you can use the output from the Quality Gate in another step.
-    # The possible outputs of the `quality-gate-status` variable are `PASSED`, `WARN` or `FAILED`.
-    - name: "Example show SonarQube Quality Gate Status value"
-      run: echo "The Quality Gate status is ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
+      
 
 
