@@ -113,7 +113,7 @@ jobs:
       uses: tenable/terrascan-action@main
       with:
         iac_type: 'k8s'
-        iac_version: 'k8s: v1'
+        iac_version: 'k8s:v1'
         policy_type: 'k8s'
         only_warn: true
         non_recursive: false
