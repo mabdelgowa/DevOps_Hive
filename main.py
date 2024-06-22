@@ -1,5 +1,5 @@
 import requests
-import prometheus_client
+import prometheus-client
 from fastapi import FastAPI, Response, status
 from fastapi.testclient import TestClient
 app = FastAPI()
