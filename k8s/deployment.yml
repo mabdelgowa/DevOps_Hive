@@ -20,7 +20,7 @@ spec:
         image: docker.io/mahmoudabdelgowad/devops_hive:latest
         resources:
           limits:
-            memory: 100Mi
+            memory: 1500Mi
         ports:
         - containerPort: 80
 
