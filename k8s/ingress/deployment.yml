@@ -17,7 +17,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: devops-hive
-          image: docker.io/mahmoudabdelgowad/devops_hive:latest
+          image: docker.io/mahmoudabdelgowad/devops_hive:10
           resources:
             limits:
               memory: 1500Mi
