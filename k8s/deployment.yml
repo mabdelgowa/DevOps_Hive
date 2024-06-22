@@ -17,10 +17,10 @@ spec:
       automountServiceAccountToken: false
       containers:
       - name: myapp
+        image: docker.io/mahmoudabdelgowad/devops_hive:latest
         resources:
           limits:
             memory: 100Mi
-        image: docker.io/mahmoudabdelgowad/devops_hive:latest
         ports:
         - containerPort: 80
 
