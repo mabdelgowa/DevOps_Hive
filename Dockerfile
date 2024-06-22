@@ -6,7 +6,9 @@ RUN pip install fastapi
 
 RUN pip install requests
 
+RUN pip install  prometheus-client
 
+RUN pip install datetime
 EXPOSE 80
 
 

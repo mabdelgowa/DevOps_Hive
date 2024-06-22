@@ -1,9 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: devops_hive
+  name: devops-hive
 spec:
   selector:
-    app: devops_hive
+    app: devops-hive
   ports:
     - port: 80

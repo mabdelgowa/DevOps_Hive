@@ -1,22 +1,22 @@
 apiVersion: apps/v1
-kind: Pod
+kind: Deployment
 metadata:
-  name: devops_hive
+  name: devops-hive
   labels:
-    app: devops_hive
+    app: devops-hive
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: devops_hive
+      app: devops-hive
   template:
     metadata:
       labels:
-        app: devops_hive
+        app: devops-hive
     spec:
       automountServiceAccountToken: false
       containers:
-        - name: devops_hive
+        - name: devops-hive
           image: docker.io/mahmoudabdelgowad/devops_hive:latest
           resources:
             limits:

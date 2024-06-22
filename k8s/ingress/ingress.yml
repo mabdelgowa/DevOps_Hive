@@ -12,20 +12,20 @@ spec:
             path: /temperature
             backend:
               service:
-                name: devops_hive
+                name: devops-hive
                 port:
                   number: 8080
           - pathType: Prefix
             path: /metrics
             backend:
               service:
-                name: devops_hive
+                name: devops-hive
                 port:
                   number: 80
           - pathType: Prefix
             path: /version
             backend:
               service:
-                name: devops_hive
+                name: devops-hive
                 port:
                   number: 80
