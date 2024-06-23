@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: devops-hive-argo-application
-  namespace: default
+  name: devops-hive-application
+  namespace: argocd
 spec:
   project: default
   source:
@@ -11,8 +11,10 @@ spec:
     path: k8s/ingress
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: argoproj
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       selfHeal: true
       prune: true
