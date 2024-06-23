@@ -56,8 +56,8 @@ def send_metrics():
 @app.get("/readyz")
 def readyz():
 
-    response1 = requests.get("https://api.opensensemap.org/boxes/5e60cf5557703e001bdae7f8?format=json")
-    response2 = requests.get("https://api.opensensemap.org/boxes/5eba5fbad46fb8001b799786?format=json")
+    response1 = requests.get("https://api.opensensemap.org/boxes/5e60cf5557703e001bdae7f?format=json")
+    response2 = requests.get("https://api.opensensemap.org/boxes/5eba5fbad46fb8001b79978?format=json")
     response3 = requests.get("https://api.opensensemap.org/boxes/5eb99cacd46fb8001b2ce04c?format=json")
     if str(response1) != "<Response [200]>" and str(response2) != "<Response [200]>" :
         return "HTTP != 200"
