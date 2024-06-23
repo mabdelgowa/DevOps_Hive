@@ -3,7 +3,7 @@ kind: Application
 metadata:
   name: devops-hive-argo-application
   namespace: default
-specs:
+spec:
   project: default
   source:
     repoURL: https://github.com/mabdelgowa/DevOps_Hive.git
