@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-hive-argo-application
+  namespace: default
+specs:
+  project: default
+  source:
+    repoURL: https://github.com/mabdelgowa/DevOps_Hive.git
+    targetRevision: HEAD
+    path: k8s/ingress
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
