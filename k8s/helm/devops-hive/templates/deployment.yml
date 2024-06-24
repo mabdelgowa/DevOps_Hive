@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-hive
+  labels:
+    app: devops-hive
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-hive
+  template:
+    metadata:
+      labels:
+        app: devops-hive
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: devops-hive
+          image: docker.io/mahmoudabdelgowad/devops_hive:latest
+          resources:
+            limits:
+              memory: 1500Mi
+          ports:
+            - containerPort: 80
