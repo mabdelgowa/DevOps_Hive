@@ -23,3 +23,12 @@ spec:
               memory: 1500Mi
           ports:
             - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /readyz
+              port: 80
+              httpHeaders:
+              - name: Custom-Header
+                value: "HTTP = 200"
+            initialDelaySeconds: 3
+            periodSeconds: 3
