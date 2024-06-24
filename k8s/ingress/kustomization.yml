@@ -1,0 +1,14 @@
+resources:
+- deployment.yml
+- service.yml
+
+
+commonLabels:
+  app: devops-hive
+
+namePrefix:
+  devops-
+
+nameSuffix:
+  -hive
+
