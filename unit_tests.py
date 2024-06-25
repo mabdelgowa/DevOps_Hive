@@ -5,6 +5,7 @@ from fastapi import status
 
 client = TestClient(app=app)
 
+##################this part to run unit test for each path and the returned status code ################################
 def test_temp():
     response = client.get('/temperature')
     assert response.status_code == status.HTTP_200_OK
