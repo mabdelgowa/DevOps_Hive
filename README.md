@@ -13,10 +13,10 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
 * 3- python (fastapi, pylint, pytest)
 * 4- ArgoCD for (continuous delivery)
 * 5- Terraform
-* 6- kubernetes ( kind, helm, kustomize) 
-* 7- treeascan 
-* 8- sonarqube
-* 9- grafana cloud 
+* 6- Kubernetes ( kind, helm, kustomize) 
+* 7- Serrascan 
+* 8- Sonarqube
+* 9- Grafana cloud 
 
 
   ## 1- Docker & Dockerhub
