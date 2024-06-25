@@ -18,6 +18,9 @@ spec:
       containers:
       - name: myapp
         image: docker.io/mahmoudabdelgowad/devops_hive:latest
+        securityContext:
+          seccompProfile:
+            type: Unconfined
         resources:
           limits:
             memory: 1500Mi
