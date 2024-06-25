@@ -18,6 +18,9 @@ spec:
       containers:
         - name: devops-hive
           image: docker.io/mahmoudabdelgowad/devops_hive:10
+          securityContext:
+            seccompProfile:
+              type: Unconfined
           resources:
             limits:
               memory: 1500Mi
