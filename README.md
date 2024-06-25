@@ -66,8 +66,14 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
   * Run Terrascan for Kubernetes manifest misconfigurations and vulnerabilities.
   * Reviewing all vulnerabilities from actions and covering it.
 
-  ## 8-sonarqube
+  ## 8-Sonarqube
   * Run SonarQube for code quality, security and static analysis. ( used sonarcloud free account to run these analysis)
 
-  ## 9- grafana cloud
+  ## 9- Grafana Cloud
   *Deploy Grafana agent to collect logs and metrics ( Created Grafana Cloud free account to Use Loki and Grafana)
+
+
+
+
+  ## Documentation Video
+  [Documentation Video](https://drive.google.com/file/d/1oXiwBw1x8I74WqWtPPXU72px6nxs7c2T/view?usp=sharing)
