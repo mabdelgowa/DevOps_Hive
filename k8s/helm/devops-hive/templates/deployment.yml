@@ -21,6 +21,7 @@ spec:
           resources:
             limits:
               memory: 1500Mi
+              cpu: "500m"
           ports:
             - containerPort: 80
           securityContext:
