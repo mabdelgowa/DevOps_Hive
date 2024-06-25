@@ -29,6 +29,8 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
   * Add step to build the Docker image.
   * Add step to unit tests.
   * Setup OpenSSF Scorecard GitHub Action and fix any issues reported by it.
+  * Run tests using terrascan
+    (note: the build and push of the docker image won't happen unless the commit message is "build")
  
   ## 3- Python
   * Used pycharm IDE for creating and editing.
