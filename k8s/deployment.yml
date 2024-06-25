@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: {{ .Values.appName }}
   labels:
     app: myapp
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: myapp
+      app: {{ .Values.appName }}
   template:
     metadata:
       labels:
-        app: myapp
+        app: {{ .Values.appName }}
     spec:
       automountServiceAccountToken: false
       containers:
-      - name: myapp
-        image: docker.io/mahmoudabdelgowad/devops_hive:latest
+      - name: {{ .Values.appName }}
+        image: {{ .Values.appImage }}
         securityContext:
           allowPrivilegeEscalation: false
           seccompProfile:
@@ -27,5 +27,5 @@ spec:
             memory: 1500Mi
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: {{ .Values.containerPort }}
 
