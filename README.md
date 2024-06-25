@@ -2,9 +2,9 @@
 [![Dynamic DevOps Roadmap](https://devopshive.net/badges/dynamic-devops-roadmap.svg)](https://github.com/DevOpsHiveHQ/dynamic-devops-roadmap)
 
 ## Goal
-The goal of this project is to build a scalable RESTful API around openSenseMap but customized to help beekeeper with their chores. The API output should be in JSON. You will start with a basic implementation, then extend the whole system to handles thousands of requests per second. But always remember, every decision has a cost.
+The goal of this project is to build a scalable RESTful API around openSenseMap but customized to help beekeeper with their chores. The API output should be in JSON. You will start with a basic implementation, then extend the whole system to handle thousands of requests per second. But always remember, every decision has a cost.
 
-You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox IDs close to each other (you can use this one 5eba5fbad46fb8001b799786 as starting point). Just copy the IDs, you will need them in the next steps.
+You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox IDs close to each other (you can use this one 5eba5fbad46fb8001b799786 as a starting point). Just copy the IDs, you will need them in the next steps.
 
 
 ## This is a complete DevOps project with the following tools:
@@ -20,13 +20,13 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
 
 
   ## 1- Docker & Dockerhub
-  * Dockerfile that builds the app with all enviroment dependencies and I selected python official image as our app is written in python.
-  * After building the image it will be pushed to my dockerhub repo 
+  * Dockerfile builds the app with all environment dependencies and I selected the official python image as our app is written in Python.
+  * After building the image it will be pushed to my docker hub repo 
 
   ## 2- Github Actions
-  * Create a GitHub Actions workflow for CI using templete for python project.
+  * Create a GitHub Actions workflow for CI using a template for a python project.
   * Add step to lint code and Dockerfile.
-  * Add step to build the Docker image.
+  * Add a step to build the Docker image.
   * Add step to unit tests.
   * Setup OpenSSF Scorecard GitHub Action and fix any issues reported by it.
   * Run tests using terrascan
@@ -64,10 +64,10 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
 
   ## 7-Terrascan
   * Run Terrascan for Kubernetes manifest misconfigurations and vulnerabilities.
-  * Reviewing all vulnerabilities from actions and covering it.
+  * Reviewing some important vulnerabilities from actions and covering them.
 
   ## 8-Sonarqube
-  * Run SonarQube for code quality, security and static analysis. ( used sonarcloud free account to run these analysis)
+  * Run SonarQube for code quality, security, and static analysis. ( used Sonarcloud free account to run these analyses)
 
   ## 9- Grafana Cloud
   *Deploy Grafana agent to collect logs and metrics ( Created Grafana Cloud free account to Use Loki and Grafana)
