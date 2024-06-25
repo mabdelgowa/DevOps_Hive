@@ -19,6 +19,7 @@ spec:
       - name: myapp
         image: docker.io/mahmoudabdelgowad/devops_hive:latest
         securityContext:
+          allowPrivilegeEscalation: false
           seccompProfile:
             type: Unconfined
         resources:
