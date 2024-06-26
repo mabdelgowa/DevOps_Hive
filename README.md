@@ -14,7 +14,7 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
 * 4- ArgoCD for (continuous delivery)
 * 5- Terraform
 * 6- Kubernetes ( kind, helm, kustomize) 
-* 7- Serrascan 
+* 7- Terrascan 
 * 8- Sonarqube
 * 9- Grafana cloud 
 
