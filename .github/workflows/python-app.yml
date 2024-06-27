@@ -139,8 +139,7 @@ jobs:
       uses: tenable/terrascan-action@main
       with:
         iac_type: 'terraform'
-        iac_version: 'v15'
-        policy_type: 'aws'
+        iac_version: 'v14'
         only_warn: true
         non_recursive: false
          
