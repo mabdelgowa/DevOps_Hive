@@ -1,0 +1,7 @@
+fastapi
+
+requests
+
+prometheus-client
+
+datetime
