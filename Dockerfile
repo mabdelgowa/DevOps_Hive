@@ -10,4 +10,5 @@ EXPOSE 80
 COPY requirements.txt main.py ./
 
 
+
 CMD [ "fastapi", "run", "./main.py", "--port", "80" ] 
