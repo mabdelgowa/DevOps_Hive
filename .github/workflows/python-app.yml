@@ -101,6 +101,12 @@ jobs:
         with:
           push: true
           tags: mahmoudabdelgowad/devops_hive:latest  
+    -
+        name: Build and push for pull requests          
+        uses: docker/build-push-action@v6
+        with:
+          pull_request: true
+          tags: mahmoudabdelgowad/devops_hive:staging  
 
 
 
