@@ -1,13 +1,14 @@
 FROM python:latest
 
 WORKDIR /root/Desktop/
+COPY requirements.txt main.py ./
 RUN pip install -r requirements.txt
 
 EXPOSE 80
 
 
  
-COPY requirements.txt main.py ./
+
 
 
 
