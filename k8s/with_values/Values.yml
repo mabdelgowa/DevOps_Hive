@@ -1,0 +1,15 @@
+appName: devops_hive
+appImage: docker.io/mahmoudabdelgowad/devops_hive:latest
+appVersion: v.0.0.1
+appReplicas: 1
+containerPort: 80
+
+servicePort: 80
+serviceType: ClusterIP
+
+
+
+
+
+
+
