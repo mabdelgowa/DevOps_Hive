@@ -140,9 +140,10 @@ jobs:
       with:
         iac_type: 'terraform'
         iac_version: 'v14'
+        policy_type: 'aws'
         only_warn: true
         non_recursive: false
-         
+        iac_dir: 'iac'      
 
 
 
