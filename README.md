@@ -76,4 +76,4 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
 
 
   ## Documentation Video
-  [Documentation Video](https://drive.google.com/file/d/1oXiwBw1x8I74WqWtPPXU72px6nxs7c2T/view?usp=sharing)
+  [Documentation Video](https://drive.google.com/file/d/1uzsoCL1jlrvrW7zh33-U50LaMx_dwRDS/view?usp=drive_link)
