@@ -78,11 +78,11 @@ def readyz():
     response = "<Response [200]>"
     for index_of_box_id in range(len(boxes_id)):
         urls.append("https://api.opensensemap.org/boxes/"+boxes_id[index_of_box_id]+"?format=json")
-    if str(requests.get(urls[1])) != response and str(requests.get(urls[2])) != response:
-        return http_error
-    elif str(requests.get(urls[3])) != response and str(requests.get(urls[2])) != response:
-        return http_error
-    elif str(requests.get(urls[1])) != response and str(requests.get(urls[3])) != response:
+    test1 = ((str(requests.get(urls[1])) != response) and (str(requests.get(urls[2])) != response))
+    test2 = ((str(requests.get(urls[3])) != response) and (str(requests.get(urls[2])) != response))
+    test3 = ((str(requests.get(urls[3])) != response) and (str(requests.get(urls[1])) != response))
+    if test1 or test2 or test3 :
         return http_error
     else:
-        return http_error
+        return "Sense boxes are ready"
+
