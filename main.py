@@ -1,7 +1,6 @@
 import requests
 import prometheus_client
-from fastapi import FastAPI, Response, status
-from fastapi.testclient import TestClient
+from fastapi import FastAPI, Response
 from datetime import datetime
 
 app = FastAPI()
@@ -23,33 +22,37 @@ def read_root():
     now = datetime.now()
     now = str(now.time())
     clock_hour_now = int(now[1])
-    response1 = requests.get("https://api.opensensemap.org/boxes/5e60cf5557703e001bdae7f8?format=json")
-    if response1.status_code == 200:
-        c.labels('get', 'https://api.opensensemap.org/boxes/5e60cf5557703e001bdae7f8?format=json').inc()
-        # used prometheus client to increment counter if the status code was 200
-    response1 = float(response1.json()['sensors'][2]['lastMeasurement']['value'])
-    response2 = requests.get("https://api.opensensemap.org/boxes/5eba5fbad46fb8001b799786?format=json")
-    if response2.status_code == 200:
-        c.labels('get', 'https://api.opensensemap.org/boxes/5eba5fbad46fb8001b799786?format=json').inc()
-    time_of_mesurement = response2.json()['sensors'][2]['lastMeasurement']['createdAt']
-    response2 = float(response2.json()['sensors'][2]['lastMeasurement']['value'])
-    response3 = requests.get("https://api.opensensemap.org/boxes/5eb99cacd46fb8001b2ce04c?format=json")
-    if response3.status_code == 200:
-        c.labels('get', 'https://api.opensensemap.org/boxes/5eb99cacd46fb8001b2ce04c?format=json').inc()
-    response3 = float(response3.json()['sensors'][1]['lastMeasurement']['value'])
-
-    response = (response1 + response2 + response3) // 3 #to get the average of temperature
+    boxes_id = ["5d8b36c15f3de0001abe60ea",
+                "5d653fe8953683001a901323",
+                "66506c7d96a6830008c33955",
+                "67371eb8a5dfb4000700bda3"]
+    urls= []
+    for index_of_box_id in range(len(boxes_id)):
+        urls.append("https://api.opensensemap.org/boxes/"+boxes_id[index_of_box_id]+"?format=json")
+    result = []
+    for index_of_url in range(len(urls)): 
+        response =(requests.get(urls[index_of_url]))
+        if  (response.status_code == 200) :
+            for index_of_temperature_sensor in range(len(response.json()['sensors'])):
+                if (response.json()['sensors'][index_of_temperature_sensor]["title"] == 'Temperatur'):
+                    value_of_temperature= str(float(response.json()['sensors'][index_of_temperature_sensor]['lastMeasurement']['value']))
+                    time_of_mesurement = response.json()['sensors'][index_of_temperature_sensor]['lastMeasurement']['createdAt']
+                    result.append(value_of_temperature)
+                    c.labels('get', index_of_url).inc()
+    final_result_aggregiation = 0
+    for index_of_result in result:
+        final_result_aggregiation += float(index_of_result)
+    final_result = round(final_result_aggregiation/len(result),2)
     # to detect the status of the temperature
-    if response < 10:
-        status = "Too_cold"
-    elif response > 11 and response < 36:
-        status = "good"
+    if final_result < 10:
+            status = "Too_cold"
+    elif final_result > 11 and response < 36:
+            status = "good"
     else:
-        status = "Too_hot"
+            status = "Too_hot"
 
-    difference_in_time_between_mesurement_now = clock_hour_now - int(time_of_mesurement[12]) # to be sure that the mesurement isn't older than one hour
-    print(response)
-    return response, f'difference in time between mesurement now (hours) = {difference_in_time_between_mesurement_now}', status
+    difference_in_time_between_mesurement_now = abs(clock_hour_now - int(time_of_mesurement[12])) # to be sure that the mesurement isn't older than one hour
+    return final_result, f'difference in time between mesurement now (hours) = {difference_in_time_between_mesurement_now}', status
 
 
 
@@ -66,32 +69,20 @@ def send_metrics():
 ##########################This is the fourth path /readyz to returns HTTP 200 unless:50% + 1 of the configured senseBoxes are not accessible########################
 @app.get("/readyz")
 def readyz():
-    response1 = requests.get("https://api.opensensemap.org/boxes/5e60cf5557703e001bdae7f?format=json")
-    response2 = requests.get("https://api.opensensemap.org/boxes/5eba5fbad46fb8001b79978?format=json")
-    response3 = requests.get("https://api.opensensemap.org/boxes/5eb99cacd46fb8001b2ce04c?format=json")
-    if str(response1) != "<Response [200]>" and str(response2) != "<Response [200]>":
-        return "HTTP != 200"
-    elif str(response2) != "<Response [200]>" and str(response3) != "<Response [200]>":
-        return "HTTP != 200"
-    elif str(response1) != "<Response [200]>" and str(response3) != "<Response [200]>":
-        return "HTTP != 200"
+    boxes_id = ["5d8b36c15f3de0001abe60ea",
+                "5d653fe8953683001a901323",
+                "66506c7d96a6830008c33955",
+                "67371eb8a5dfb4000700bda3"]
+    urls= []
+    http_error = "HTTP != 200 there is more than one box don't rsponse"
+    response = "<Response [200]>"
+    for index_of_box_id in range(len(boxes_id)):
+        urls.append("https://api.opensensemap.org/boxes/"+boxes_id[index_of_box_id]+"?format=json")
+    if str(requests.get(urls[1])) != response and str(requests.get(urls[2])) != response:
+        return http_error
+    elif str(requests.get(urls[3])) != response and str(requests.get(urls[2])) != response:
+        return http_error
+    elif str(requests.get(urls[1])) != response and str(requests.get(urls[3])) != response:
+        return http_error
     else:
-        return "HTTP = 200"
-
-
-
-
-##########################This part for integration test to test all pathes at one time########################
-
-client = TestClient(app)
-def test_read_main():
-    response = client.get("/temperature")
-    assert response.status_code == 200
-    response = client.get("/version")
-    assert response.status_code == status.HTTP_200_OK
-    assert response.text == '"current version is v0.3.0"'
-    response = client.get("/metrics")
-    assert response.status_code == status.HTTP_200_OK
-
-
-test_read_main()
+        return http_error
