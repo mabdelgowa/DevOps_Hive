@@ -69,13 +69,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
-        pip install fastapi
-        pip install requests
-        pip install prometheus-client
+        pip install pytest prometheus-client fastapi requests httpx
     - name: Test with pytest
       run: |
-        pytest ./unit_tests.py
+        pytest ./test/unit.py
   build_image:
     needs: test
     runs-on: ubuntu-latest
