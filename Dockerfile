@@ -6,10 +6,4 @@ RUN pip install -r requirements.txt
 
 EXPOSE 80
 
-
- 
-
-
-
-
 CMD [ "fastapi", "run", "./main.py", "--port", "80" ] 

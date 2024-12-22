@@ -44,9 +44,9 @@ def read_root():
     final_result = round(final_result_aggregiation/len(result),2)
     # to detect the status of the temperature
     if final_result < 10:
-            status = "Too_cold"
+        status = "Too_cold"
     elif final_result > 11 and final_result < 36:
-            status = "good"
+        status = "good"
     else:
             status = "Too_hot"
 
