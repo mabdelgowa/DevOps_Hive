@@ -85,4 +85,3 @@ def readyz():
         return http_error
     else:
         return "Sense boxes are ready"
-
