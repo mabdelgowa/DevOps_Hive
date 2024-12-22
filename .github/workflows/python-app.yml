@@ -75,7 +75,7 @@ jobs:
         pip install prometheus-client
     - name: Test with pytest
       run: |
-        pytest ./unit_tests.py
+        pytest ./tests/unit.py
   build_image:
     needs: test
     runs-on: ubuntu-latest
