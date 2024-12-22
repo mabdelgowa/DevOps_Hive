@@ -1,9 +1,9 @@
 from fastapi.testclient import TestClient
-from main import app
+from context import main
 from fastapi import status
 
 
-client = TestClient(app=app)
+client = TestClient(app=main.app)
 
 ##################this part to run unit test for each path and the returned status code ################################
 def test_temp():
