@@ -1,0 +1,36 @@
+name: Secret Scanning Alerts
+
+
+on:
+  schedule:
+    - cron: '0 */6 * * 0' # Run every 4 hours
+jobs:
+  secret-scanning-alerts:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Secret Scanning Alerts
+      uses: advanced-security/secret-scanning-custom-notifications/@v1
+      with:
+        frequency: 3000
+        scope: 'repository'
+        new_alerts_filepath: 'created_alerts.json'
+        closed_alerts_filepath: 'closed_alerts.json'
+        token: ${{ secrets.TOKEN }}
+
+    - name: Count the number of entries in the alert files
+      id: count_alerts
+      run: |
+        created_alerts_count=$(jq '. | length' created_alerts.json)
+        closed_alerts_count=$(jq '. | length' closed_alerts.json)
+        echo "created_alerts_count=$created_alerts_count" >> $GITHUB_OUTPUT
+        echo "closed_alerts_count=$closed_alerts_count" >> $GITHUB_OUTPUT
+    
+    - name: Upload artifact
+      if: steps.count_alerts.outputs.created_alerts_count > 0 || steps.count_alerts.outputs.closed_alerts_count > 0
+      uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: |
+          created_alerts.json
+          closed_alerts.json
