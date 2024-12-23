@@ -138,7 +138,7 @@ jobs:
     - name: Set foobar to cool
       uses: mikefarah/yq@master
       with:
-        cmd: yq -p json -o yaml terrascan.sarif
+        cmd: yq -p json -o yaml terrascan.sarif >  terrascan.yml
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
       with:
