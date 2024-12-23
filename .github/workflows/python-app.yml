@@ -134,3 +134,12 @@ jobs:
       with:
         sarif_file: terrascan.sarif
         category: terrascan
+        
+    - name: Secret Scanning Alerts
+      uses: advanced-security/secret-scanning-custom-notifications/@v1
+      with:
+        frequency: 24 # hours
+        scope: 'repository'
+        repository: 'DevOps_Hive'
+        new_alerts_filepath: 'new_alerts.json'
+        closed_alerts_filepath: 'closed_alerts.json'
