@@ -138,8 +138,8 @@ jobs:
     - name: Secret Scanning Alerts
       uses: advanced-security/secret-scanning-custom-notifications/@v1
       with:
-        frequency: 24 # hours
+        frequency: 3000
         scope: 'repository'
-        repository: 'DevOps_Hive'
-        new_alerts_filepath: 'new_alerts.json'
+        new_alerts_filepath: 'created_alerts.json'
         closed_alerts_filepath: 'closed_alerts.json'
+        token: ${{ secrets.TOKEN }}
