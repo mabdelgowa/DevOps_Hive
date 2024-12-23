@@ -135,6 +135,12 @@ jobs:
         sarif_file: terrascan.sarif
         category: terrascan
 
+    - uses: actions/checkout@v2
+    - name: Get SDK Version from config
+      id: lookupSdkVersion
+      uses: mikefarah/yq@master
+      with:
+        cmd: yq 'terrascan.sarif' 'terrascan.yml'
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
@@ -161,7 +167,7 @@ jobs:
         # Optional converting Markdown to HTML (set content_type to text/html too):
         convert_markdown: true
         # Optional attachments:
-        attachments: terrascan.sarif
+        attachments: terrascan.yml
         # Optional priority: 'high', 'normal' (default) or 'low'
         priority: low
 
