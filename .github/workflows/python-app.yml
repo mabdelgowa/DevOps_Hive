@@ -122,12 +122,9 @@ jobs:
         iac_type: 'k8s'
         iac_version: 'v1'
         policy_type: 'k8s'
-        only_warn: true
+        only_warn: false
         non_recursive: false
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: action.yml
+
 
 
 
@@ -144,10 +141,6 @@ jobs:
         iac_type: 'terraform'
         iac_version: 'v14'
         policy_type: 'aws'
-        only_warn: true
+        only_warn: false
         non_recursive: false
         iac_dir: 'iac'      
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3
-      with:
-        sarif_file: action.yml
