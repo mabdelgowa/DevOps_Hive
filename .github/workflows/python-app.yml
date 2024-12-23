@@ -111,6 +111,8 @@ jobs:
 
   terrascan_job:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
     name: terrascan-action
     steps:
     - name: Checkout repository
@@ -129,6 +131,7 @@ jobs:
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: terrascan.sarif
+
         
 
 
@@ -136,6 +139,8 @@ jobs:
 
   terrascan_job_terraform:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
     name: terrascan-action-terraform
     steps:
     - name: Checkout repository
