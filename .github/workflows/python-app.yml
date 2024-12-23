@@ -129,8 +129,25 @@ jobs:
         only_warn: false
         non_recursive: false
         sarif_upload: true
-    - name: Run Terrascan for tf
-      id: terrascan_tf
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: terrascan.sarif
+        category: terrascan
+
+
+  terrascan_job_terraform:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    name: terrascan-action-terraform
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Run Terrascan
+      id: terrascan
       uses: tenable/terrascan-action@main
       with:
         iac_type: 'terraform'
@@ -140,8 +157,11 @@ jobs:
         non_recursive: false
         sarif_upload: true
         iac_dir: 'iac'  
+    - name: changing sarif file name
+      run: mv terrascan.sarif terrascan_tf.sarif
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
       with:
-        sarif_file: terrascan.sarif
+        sarif_file: terrascan_tf.sarif
         category: terrascan
+
