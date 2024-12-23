@@ -124,6 +124,8 @@ jobs:
         policy_type: 'k8s'
         only_warn: false
         non_recursive: false
+        sarif_upload: true
+        
 
 
 
@@ -143,4 +145,5 @@ jobs:
         policy_type: 'aws'
         only_warn: false
         non_recursive: false
+        sarif_upload: true
         iac_dir: 'iac'      
