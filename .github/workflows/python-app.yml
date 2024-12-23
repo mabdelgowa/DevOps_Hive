@@ -134,14 +134,11 @@ jobs:
       with:
         sarif_file: terrascan.sarif
         category: terrascan
-
-    - uses: actions/checkout@v2
-    - name: Get SDK Version from config
-      id: lookupSdkVersion
+  
+    - name: Set foobar to cool
       uses: mikefarah/yq@master
       with:
-        cmd: yq 'terrascan.sarif' 'terrascan.yml'
-
+        cmd: yq -p json -o yaml terrascan.sarif
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
       with:
