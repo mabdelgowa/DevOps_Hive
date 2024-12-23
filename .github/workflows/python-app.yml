@@ -125,7 +125,7 @@ jobs:
         only_warn: true
         non_recursive: false
     - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3.26.6
+      uses: github/codeql-action/upload-sarif@2.19.0
       with:
         sarif_file: terrascan.sarif
 
@@ -148,6 +148,6 @@ jobs:
         non_recursive: false
         iac_dir: 'iac'      
     - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v3.26.6
+      uses: github/codeql-action/upload-sarif@2.19.0
       with:
         sarif_file: terrascan.sarif
