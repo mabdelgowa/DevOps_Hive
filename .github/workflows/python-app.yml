@@ -146,8 +146,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Run Terrascan
-      id: terrascan
+    - name: Run Terrascan_tf
+      id: terrascan2
       uses: tenable/terrascan-action@main
       with:
         iac_type: 'terraform'
