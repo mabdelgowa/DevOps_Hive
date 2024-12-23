@@ -1,5 +1,6 @@
 name: Secret Scanning Alerts
 
+
 on:
   schedule:
     - cron: '0 */6 * * 0' # Run every 4 hours
