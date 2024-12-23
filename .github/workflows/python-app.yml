@@ -134,12 +134,3 @@ jobs:
       with:
         sarif_file: terrascan.sarif
         category: terrascan
-        
-    - name: Secret Scanning Alerts
-      uses: advanced-security/secret-scanning-custom-notifications/@v1
-      with:
-        frequency: 3000
-        scope: 'repository'
-        new_alerts_filepath: 'created_alerts.json'
-        closed_alerts_filepath: 'closed_alerts.json'
-        token: ${{ secrets.TOKEN }}
