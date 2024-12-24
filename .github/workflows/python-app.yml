@@ -141,6 +141,7 @@ jobs:
         cmd: yq -p json -o yaml terrascan.sarif >  terrascan.yml
     - name: Handling terrascan report
       run: |
+            echo "critical" >> terrascan.yml 
             cat terrascan.yml | grep "severity: LOW" -B 5 > terrascan_LOW.yml
             cat terrascan.yml | grep "severity: MEDIUM" -B 5 > terrascan_MEDIUM.yml 
             cat terrascan.yml | grep "severity: HIGH" -B 5 > terrascan_HIGH.yml 
