@@ -16,7 +16,6 @@ we will change whole things in this file
 This project was built in the KANBAN agile methodology with jira
 
 
-
 ## This is a complete DevOps project with the following tools:
 * 1- Docker & Dockerhub
 * 2- Github actions
