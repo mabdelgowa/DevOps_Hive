@@ -139,6 +139,11 @@ jobs:
       uses: mikefarah/yq@master
       with:
         cmd: yq -p json -o yaml terrascan.sarif >  terrascan.yml
+    - name: Handling terrascan report
+      run: |
+            cat terrascan.yml | grep "severity: MEDIUM" -B 5 > terrascan_MEDIUM.yml
+            cat terrascan.yml | grep "severity: LOW" -B 5 > terrascan_LOW.yml
+            cat terrascan.yml | grep "severity: HIGH" -B 5 > terrascan_HIGH.yml
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
       with:
@@ -164,7 +169,10 @@ jobs:
         # Optional converting Markdown to HTML (set content_type to text/html too):
         convert_markdown: true
         # Optional attachments:
-        attachments: terrascan.yml
+        attachments: |
+                      terrascan_MEDIUM.yml
+                      terrascan_LOW.yml
+                      terrascan_HIGH.yml
         # Optional priority: 'high', 'normal' (default) or 'low'
         priority: low
 
