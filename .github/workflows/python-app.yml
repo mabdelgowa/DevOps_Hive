@@ -141,9 +141,12 @@ jobs:
         cmd: yq -p json -o yaml terrascan.sarif >  terrascan.yml
     - name: Handling terrascan report
       run: |
-            cat terrascan.yml | grep "severity: MEDIUM" -B 5 > terrascan_MEDIUM.yml
             cat terrascan.yml | grep "severity: LOW" -B 5 > terrascan_LOW.yml
+            cat terrascan.yml | grep "severity: MEDIUM" -B 5 > terrascan_MEDIUM.yml
             cat terrascan.yml | grep "severity: HIGH" -B 5 > terrascan_HIGH.yml
+            cat terrascan.yml | grep  "level: note" -B 2 -A 12 > terrascan_note.yml
+            cat terrascan.yml | grep  "level: warning" -B 2 -A 12 > terrascan_warning.yml
+            cat terrascan.yml | grep  "level: critical" -B 2 -A 12 > terrascan_critical.yml
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
       with:
@@ -173,6 +176,9 @@ jobs:
                       terrascan_MEDIUM.yml
                       terrascan_LOW.yml
                       terrascan_HIGH.yml
+                      terrascan_note.yml
+                      terrascan_warning.yml
+                      terrascan_critical.yml
         # Optional priority: 'high', 'normal' (default) or 'low'
         priority: low
 
