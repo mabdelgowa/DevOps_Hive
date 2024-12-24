@@ -14,6 +14,13 @@ we will change whole things in this file
 
 ## Software Project Management
 This project was built in the KANBAN agile methodology with jira
+![image](https://github.com/user-attachments/assets/17685dbf-54ff-45b1-95bf-95d1bdf8c31a)   ![image](https://github.com/user-attachments/assets/d2e2bea2-65e2-41f0-b6ae-189062a20f2e)
+
+![image](https://github.com/user-attachments/assets/a497a63e-45e7-42d9-98e7-1b4be93e9d54)   ![image](https://github.com/user-attachments/assets/6f03563b-71a6-4181-87ac-ec4f5ba92f97)
+
+
+
+
 
 
 ## This is a complete DevOps project with the following tools:
