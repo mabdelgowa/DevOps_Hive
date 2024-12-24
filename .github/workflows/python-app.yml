@@ -147,7 +147,7 @@ jobs:
             cat terrascan.yml | grep "severity: HIGH" -B 5 > terrascan_HIGH.yml 
             cat terrascan.yml | grep  "level: note" -B 2 -A 12 > terrascan_note.yml
             cat terrascan.yml | grep  "level: warning" -B 2 -A 12 > terrascan_warning.yml
-            cat terrascan2.yml | grep  "level: critical" -B 2 -A 12 > terrascan_critical.yml 
+            cat terrascan2.yml | grep  "critical" > terrascan_critical.yml 
       continue-on-error: true
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
