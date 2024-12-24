@@ -176,4 +176,3 @@ jobs:
                       terrascan_critical.yml
         # Optional priority: 'high', 'normal' (default) or 'low'
         priority: low
-
