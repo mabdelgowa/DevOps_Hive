@@ -40,13 +40,7 @@ jobs:
     
       run: |
         python -m pip install --upgrade pip
-        pip install prometheus-client
-        pip install flake8 pytest
-        pip install fastapi
-        pip install uvicorn
-        pip install pytest
-        pip install requests
-        
+        pip install prometheus-client flake8 pytest fastapi uvicorn pytest requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with flake8
       run: |
@@ -135,19 +129,18 @@ jobs:
         sarif_file: terrascan.sarif
         category: terrascan
   
-    - name: Set foobar to cool
+    - name: Convert json file into yaml
       uses: mikefarah/yq@master
       with:
         cmd: yq -p json -o yaml terrascan.sarif >  terrascan.yml
     - name: Handling terrascan report
       run: |
-            echo "critical" > terrascan2.yml 
             cat terrascan.yml | grep "severity: LOW" -B 5 > terrascan_LOW.yml
             cat terrascan.yml | grep "severity: MEDIUM" -B 5 > terrascan_MEDIUM.yml 
             cat terrascan.yml | grep "severity: HIGH" -B 5 > terrascan_HIGH.yml 
             cat terrascan.yml | grep  "level: note" -B 2 -A 12 > terrascan_note.yml
             cat terrascan.yml | grep  "level: warning" -B 2 -A 12 > terrascan_warning.yml
-            cat terrascan2.yml | grep  "critical" > terrascan_critical.yml 
+            cat terrascan.yml | grep  "level: critical" -B 2 -A 12 > terrascan_warning.yml
       continue-on-error: true
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
