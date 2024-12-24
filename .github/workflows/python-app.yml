@@ -141,13 +141,13 @@ jobs:
         cmd: yq -p json -o yaml terrascan.sarif >  terrascan.yml
     - name: Handling terrascan report
       run: |
-            echo "critical" >> terrascan.yml 
+            echo "critical" >> terrascan2.yml 
             cat terrascan.yml | grep "severity: LOW" -B 5 > terrascan_LOW.yml
             cat terrascan.yml | grep "severity: MEDIUM" -B 5 > terrascan_MEDIUM.yml 
             cat terrascan.yml | grep "severity: HIGH" -B 5 > terrascan_HIGH.yml 
             cat terrascan.yml | grep  "level: note" -B 2 -A 12 > terrascan_note.yml
             cat terrascan.yml | grep  "level: warning" -B 2 -A 12 > terrascan_warning.yml
-            cat terrascan.yml | grep  "level: critical" -B 2 -A 12 > terrascan_critical.yml 
+            cat terrascan2.yml | grep  "level: critical" -B 2 -A 12 > terrascan_critical.yml 
       continue-on-error: true
     - name: Send mail
       uses: dawidd6/action-send-mail@v4
