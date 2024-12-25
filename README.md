@@ -18,8 +18,6 @@ The Kanban method is an approach to evolutionary and incremental systems and pro
 Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), Jira, Swift, Kanban, LeanKit, Kanban, etc. Stages could be configured in these tools, and the movement of tickets between stages could be viewed in these tools.
 ![KANBAN Agile](https://github.com/user-attachments/assets/8c54eb2b-42ef-4573-8154-81d3e90e3259)
 
-
-
   ## 1- Docker & Dockerhub
   * Dockerfile builds the app with all environment dependencies and I selected the official python image as our app is written in Python.
   * After building the image it will be pushed to my docker hub repo 
