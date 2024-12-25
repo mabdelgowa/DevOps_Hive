@@ -61,16 +61,6 @@ Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), 
   * Create Kustomize manifests for the application.
   * Configure the Kubernetes app manifest to use /readyz as a readiness probe.
 
-  ## 7-Terrascan
-  * Run Terrascan for Kubernetes manifest misconfigurations and vulnerabilities.
-  * Reviewing some important vulnerabilities from actions and covering them.
-
-  ## 8-Sonarqube
-  * Run SonarQube for code quality, security, and static analysis. ( used Sonarcloud free account to run these analyses)
-
-  ## 9- Grafana Cloud
-  *Deploy Grafana agent to collect logs and metrics ( Created Grafana Cloud free account to Use Loki and Grafana)
-
 
 
 
