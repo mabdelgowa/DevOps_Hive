@@ -12,6 +12,12 @@ You can get senseBox IDs by checking the openSenseMap website. Use 3 senseBox ID
 
 we will change whole things in this file
 
+## Software Project Management
+This project was built in the KANBAN agile methodology with jira.
+The Kanban method is an approach to evolutionary and incremental systems and process change for organizations. A work-in-progress limited pull system is the central mechanism to uncover system operation (or process) complications and encourage collaboration to continuously improve the system.
+Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), Jira, Swift, Kanban, LeanKit, Kanban, etc. Stages could be configured in these tools, and the movement of tickets between stages could be viewed in these tools.
+![KANBAN Agile](https://github.com/user-attachments/assets/8c54eb2b-42ef-4573-8154-81d3e90e3259)
+
 
 ## This is a complete DevOps project with the following tools:
 * 1- Docker & Dockerhub
