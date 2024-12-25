@@ -19,17 +19,6 @@ Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), 
 ![KANBAN Agile](https://github.com/user-attachments/assets/8c54eb2b-42ef-4573-8154-81d3e90e3259)
 
 
-## This is a complete DevOps project with the following tools:
-* 1- Docker & Dockerhub
-* 2- Github actions
-* 3- python (fastapi, pylint, pytest)
-* 4- ArgoCD for (continuous delivery)
-* 5- Terraform
-* 6- Kubernetes ( kind, helm, kustomize) 
-* 7- Terrascan 
-* 8- Sonarqube
-* 9- Grafana cloud 
-
 
   ## 1- Docker & Dockerhub
   * Dockerfile builds the app with all environment dependencies and I selected the official python image as our app is written in Python.
