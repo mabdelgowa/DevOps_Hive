@@ -14,4 +14,4 @@ def test_temp():
 def test_ver():
     response = client.get('/version')
     assert response.status_code == status.HTTP_200_OK
-    assert response.text == '"current version is v0.3.0"'
+    assert response.text == '"current version is v0.4.0"'

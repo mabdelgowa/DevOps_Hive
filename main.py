@@ -14,7 +14,7 @@ c = prometheus_client.Counter('my_response_total', 'HTTP Failures',
 
 @app.get("/version")
 def print_version():
-    return "current version is v0.3.0"
+    return "current version is v0.4.0"
 
 ##########################This is the second path /temperature which configured with three boxIDs########################
 @app.get("/temperature")
