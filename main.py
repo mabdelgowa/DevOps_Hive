@@ -8,8 +8,6 @@ app = FastAPI()
 c = prometheus_client.Counter('my_response_total', 'HTTP Failures',
                               ['method', 'endpoint'])  # this line for prometheus client to detect th HTTP requests
 
-
-
 ##########################This is the first path /version to return the current version########################
 
 @app.get("/version")
