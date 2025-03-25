@@ -19,12 +19,19 @@ spec:
         - name: devops-hive
           image: docker.io/mahmoudabdelgowad/devops_hive:10
           securityContext:
+            readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
+            runAsUser: 1000
             seccompProfile:
-              type: Unconfined
+              type: RuntimeDefault
+            appArmorProfile:
+              type: RuntimeDefault
           resources:
+            requests:
+              memory: "1000Mi"
+              cpu: "250m"
             limits:
-              memory: 1500Mi
+              memory: "1500Mi"
               cpu: "500m"
           ports:
             - containerPort: 80
