@@ -127,7 +127,7 @@ jobs:
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: terrascan.sarif
-        category: terrascan
+          #   category: terrascan
   
     - name: Convert json file into yaml
       uses: mikefarah/yq@master
