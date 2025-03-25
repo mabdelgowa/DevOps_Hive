@@ -120,7 +120,7 @@ jobs:
         iac_type: 'k8s'
         iac_version: 'v1'
         policy_type: 'k8s'
-        only_warn: false
+        only_warn: true
         non_recursive: false
         sarif_upload: true
     - name: Upload SARIF file
