@@ -116,14 +116,5 @@ We welcome contributions! Feel free to open issues or submit pull requests. For 
 
 ---
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-Feel free to copy and save it as a `README.md` file. Let me know if you need any further assistance!
-
-
-
-  ## Documentation Video
+## Documentation Video
   [Documentation Video](https://drive.google.com/file/d/1uzsoCL1jlrvrW7zh33-U50LaMx_dwRDS/view?usp=drive_link)
