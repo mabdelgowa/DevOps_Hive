@@ -18,49 +18,121 @@ The Kanban method is an approach to evolutionary and incremental systems and pro
 Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), Jira, Swift, Kanban, LeanKit, Kanban, etc. Stages could be configured in these tools, and the movement of tickets between stages could be viewed in these tools.
 ![KANBAN Agile](https://github.com/user-attachments/assets/8c54eb2b-42ef-4573-8154-81d3e90e3259)
 
-  ## 1- Docker & Dockerhub
-  * Dockerfile builds the app with all environment dependencies and I selected the official python image as our app is written in Python.
-  * After building the image it will be pushed to my docker hub repo 
+Certainly! Here's the raw content for the `README.md` file again:
 
-  ## 2- Github Actions
-  * Create a GitHub Actions workflow for CI using a template for a python project.
-  * Add step to lint code and Dockerfile.
-  * Add a step to build the Docker image.
-  * Add step to unit tests.
-  * Setup OpenSSF Scorecard GitHub Action and fix any issues reported by it.
-  * Run tests using terrascan
-    (note: the build and push of the docker image won't happen unless the commit message is "build")
- 
-  ## 3- Python
-  * Used pycharm IDE for creating and editing.
-  * Used fastapi to implement our cod
-  * Used requests package to send requests to openSenseMap API.
-  * Write unit test using pytest.
-  * Lint the code using pylint 
+```markdown
+# DevOps Hive - Enhancement Branch
 
-  ## 4- ArgoCD
-  * appling gitops concept.
-    -	Installing argo project
-    -	Open ports for argo project
-    -	Authentication for argo project
-    -	argo application manifest
-    -	Running argocd
+## Overview
 
-  ## 5- Terraform
-*  * 1- VPC.tf:
-     * This file will create a VPC using VPC module and provision some resources in this VPC like nat gateway, public subnet, and private subnet
-*  * 2- eks-cluster.tf:
-     * This file will use eks module to provision all eks cluster resources  like cluster name and instances type
+The **DevOps Hive** project is a comprehensive initiative to build scalable solutions for DevOps and cloud automation processes, with a special focus on environmental data tracking and management for beekeepers. The enhancement branch focuses on expanding and refining the existing architecture and functionality of the HiveBox project.
 
-* Note: there is also a file (terraform.tfvars) for assigning variables which will be needed in the two previous files
+### Project Goal
+The main objective is to create a **RESTful API** that collects and processes environmental sensor data from **openSenseMap**. This API will help beekeepers monitor and manage their beekeeping operations effectively. The system is designed to handle thousands of requests per second, ensuring scalability and performance.
 
-  ## 6- Kubernetes
-  * Manifests for Kubernetes to deploy the app using them on Kubernetes with adding config to support high availability and volume persistence and exposing service to the public (using kind to test).
-  * Create KIND config to run with Ingress-Nginx.
-  * Create a Helm chart for the application.
-  * Create Kustomize manifests for the application.
-  * Configure the Kubernetes app manifest to use /readyz as a readiness probe.
+### Tech Stack
+- **Python**: FastAPI for the API.
+- **Docker**: Containerization for deployment (optional for running locally).
+- **GitHub Actions**: CI/CD for automated builds, tests, and deployment.
+- **ArgoCD**: GitOps continuous delivery.
+- **Terraform**: Infrastructure as Code (IaC) for cloud resource provisioning (AWS).
+  
+### Key Features
+- Scalable API that interacts with openSenseMap data.
+- Integration of Docker and Kubernetes for deployment.
+- CI/CD pipeline via GitHub Actions.
+- Infrastructure automation using Terraform for AWS EKS clusters.
 
+---
+
+## Project Structure
+
+```
+├── Dockerfile
+├── main.py
+├── requirements.txt
+├── terraform
+│   ├── eks-cluster.tf
+│   └── vpc.tf
+├── .github
+│   └── workflows
+├── k8s
+├── test
+├── sonar-project.properties
+└── README.md
+```
+
+---
+
+## Setup & Installation
+
+### 1. Clone the repository
+To get started, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/mabdelgowa/DevOps_Hive.git
+cd DevOps_Hive
+```
+
+### 2. Set up a virtual environment (optional but recommended)
+Create and activate a virtual environment to keep your dependencies isolated:
+
+```bash
+# For Linux/macOS:
+python3 -m venv venv
+source venv/bin/activate
+
+# For Windows:
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+### 3. Install dependencies
+Install the required Python dependencies using `pip`:
+
+```bash
+pip install -r requirements.txt
+```
+
+The `requirements.txt` file includes FastAPI, Uvicorn, and other necessary packages for the project.
+
+### 4. Run the FastAPI app locally
+To start the FastAPI application, use the following command:
+
+```bash
+uvicorn main:app --reload
+```
+
+- This will start the FastAPI application on `http://localhost:8000`.
+- You can access the API docs at `http://localhost:8000/docs`.
+
+### 5. Access the API
+Once the app is running, you can interact with the API by visiting the following endpoints:
+
+- **Main API endpoint**: `http://localhost:8000/`
+- **Swagger UI for API documentation**: `http://localhost:8000/docs`
+- **ReDoc UI for API documentation**: `http://localhost:8000/redoc`
+
+---
+
+## Usage
+
+Once the FastAPI server is running locally, you can use the available endpoints to interact with the system. For example, you can make GET or POST requests to the API for data from openSenseMap.
+
+---
+
+## Contributing
+
+We welcome contributions! Feel free to open issues or submit pull requests. For larger changes, please create a new issue to discuss the change before implementing.
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+Feel free to copy and save it as a `README.md` file. Let me know if you need any further assistance!
 
 
 
