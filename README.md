@@ -18,17 +18,6 @@ The Kanban method is an approach to evolutionary and incremental systems and pro
 Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), Jira, Swift, Kanban, LeanKit, Kanban, etc. Stages could be configured in these tools, and the movement of tickets between stages could be viewed in these tools.
 ![KANBAN Agile](https://github.com/user-attachments/assets/8c54eb2b-42ef-4573-8154-81d3e90e3259)
 
-Certainly! Here's the raw content for the `README.md` file again:
-
-```markdown
-# DevOps Hive - Enhancement Branch
-
-## Overview
-
-The **DevOps Hive** project is a comprehensive initiative to build scalable solutions for DevOps and cloud automation processes, with a special focus on environmental data tracking and management for beekeepers. The enhancement branch focuses on expanding and refining the existing architecture and functionality of the HiveBox project.
-
-### Project Goal
-The main objective is to create a **RESTful API** that collects and processes environmental sensor data from **openSenseMap**. This API will help beekeepers monitor and manage their beekeeping operations effectively. The system is designed to handle thousands of requests per second, ensuring scalability and performance.
 
 ### Tech Stack
 - **Python**: FastAPI for the API.
