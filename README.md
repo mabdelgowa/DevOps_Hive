@@ -30,28 +30,54 @@ Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), 
 ## Project Structure
 ```
 .
-├── .github/                 # GitHub Actions workflows
-│   ├── workflows/           # CI/CD pipeline definitions
-│   ├── ISSUE_TEMPLATE/      # GitHub issue templates
-├── iac/                     # Infrastructure as Code (Terraform)
-│   ├── modules/             # Reusable Terraform modules
-│   ├── main.tf              # Main Terraform configuration
-│   ├── variables.tf         # Terraform variables
-│   ├── outputs.tf           # Terraform outputs
-│   ├── provider.tf          # Cloud provider configuration
-├── k8s/                     # Kubernetes manifests
-│   ├── deployments/         # Deployment YAML files
-│   ├── services/            # Service YAML files
-│   ├── configmaps/          # Configuration files for Kubernetes
-│   ├── secrets/             # Secure secrets management
-├── .dockerignore            # Files to ignore in Docker builds
-├── .gitignore               # Files to exclude from Git
-├── Dockerfile               # Docker container definition
-├── main.py                  # Main FastAPI application
-├── requirements.txt         # Python dependencies
-├── sonar-project.properties # SonarQube configuration
-├── unit_tests.py            # Unit tests
-├── README.md                # Project documentation
+├── Dockerfile
+├── iac
+│   ├── eks-cluster.tf
+│   ├── terraform.tfvars
+│   └── vpc.tf
+├── k8s
+│   ├── application.yaml
+│   ├── helm
+│   │   └── devops-hive
+│   │       ├── charts
+│   │       ├── Chart.yaml
+│   │       └── templates
+│   │           ├── deployment.yml
+│   │           ├── _helpers.tpl
+│   │           ├── ingress.yml
+│   │           ├── NOTES.txt
+│   │           └── service.yml
+│   ├── ingress
+│   │   ├── ingress.yml
+│   │   └── nginx_contriller_installation
+│   └── kustomize
+│       ├── base
+│       │   ├── deployment.yml
+│       │   ├── ingress.yml
+│       │   ├── kustomization.yml
+│       │   └── service.yml
+│       └── overlays
+│           └── dev
+│               ├── deployment-patch.yml
+│               └── kustomization.yml
+├── main.py
+├── __pycache__
+│   ├── main.cpython-312.pyc
+│   ├── main.cpython-39.pyc
+│   ├── testtry.cpython-312.pyc
+│   └── unit.cpython-312-pytest-8.2.2.pyc
+├── README.md
+├── requirements.txt
+├── sonar-project.properties
+└── test
+    ├── context.py
+    ├── integration.py
+    ├── __pycache__
+    │   ├── compress.cpython-312.pyc
+    │   ├── context.cpython-312.pyc
+    │   └── unit.cpython-312-pytest-8.2.2.pyc
+    └── unit.py
+
 ```
 
 ## Prerequisites
