@@ -123,7 +123,7 @@ Ensure you have the following installed:
 ## Kubernetes Deployment
 1. **Apply Kubernetes Manifests**
    ```sh
-   kubectl apply -f k8s/
+   kubectl apply -f k8s/kustomize/base
    ```
 2. **Check Running Pods**
    ```sh
