@@ -1,0 +1,13 @@
+bases:
+- ../../base
+
+namespace: dev
+
+patches:
+  - target:
+      kind: Deployment
+      name: devops-hive
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1

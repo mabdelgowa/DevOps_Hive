@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-hive
+spec:
+  replicas: 2
+  template:
+    spec:
+      securityContext:
+        appArmorProfile:
+          type: RuntimeDefault
+      automountServiceAccountToken: false
+      containers:
+        - name: devops-hive
+          image: docker.io/mahmoudabdelgowad/devops_hive:latest
+          resources:
+            requests:
+              memory: "1000Mi"
+              cpu: "250m"
+            limits:
+              memory: "1500Mi"
+              cpu: "500m"
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+          ports:
+            - containerPort: 80
