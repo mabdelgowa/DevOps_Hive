@@ -41,12 +41,12 @@ Electronic Kanban boards are also available in ALM tools like Rally (CA Agile), 
 │   │   └── devops-hive
 │   │       ├── charts
 │   │       ├── Chart.yaml
-│   │       └── templates
-│   │           ├── deployment.yml
-│   │           ├── _helpers.tpl
-│   │           ├── ingress.yml
-│   │           ├── NOTES.txt
-│   │           └── service.yml
+│   │       ├── templates
+│   │       │   ├── deployment.yml
+│   │       │   ├── _helpers.tpl
+│   │       │   ├── ingress.yml
+│   │       │   └── service.yml
+│   │       └── values.yaml
 │   ├── ingress
 │   │   ├── ingress.yml
 │   │   └── nginx_contriller_installation
