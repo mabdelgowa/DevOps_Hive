@@ -91,24 +91,52 @@ Ensure you have the following installed:
 - Grafana Cloud (for monitoring setup)
 
 ## Installation & Setup
-1. **Clone the Repository**
-   ```sh
-   git clone https://github.com/mabdelgowa/DevOps_Hive.git
-   cd DevOps_Hive
-   ```
-2. **Set Up Virtual Environment** (optional but recommended)
-   ```sh
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-3. **Install Dependencies**
-   ```sh
-   pip install -r requirements.txt
-   ```
-4. **Run the Application Locally**
-   ```sh
-   python main.py
-   ```
+### 1. Clone the repository
+To get started, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/mabdelgowa/DevOps_Hive.git
+cd DevOps_Hive
+```
+
+### 2. Set up a virtual environment (optional but recommended)
+Create and activate a virtual environment to keep your dependencies isolated:
+
+```bash
+# For Linux/macOS:
+python3 -m venv venv
+source venv/bin/activate
+
+# For Windows:
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+### 3. Install dependencies
+Install the required Python dependencies using `pip`:
+
+```bash
+pip install -r requirements.txt
+```
+
+The `requirements.txt` file includes FastAPI, Uvicorn, and other necessary packages for the project.
+
+### 4. Run the FastAPI app locally
+To start the FastAPI application, use the following command:
+
+```bash
+uvicorn main:app --reload
+```
+
+- This will start the FastAPI application on `http://localhost:8000`.
+- You can access the API docs at `http://localhost:8000/docs`.
+
+### 5. Access the API
+Once the app is running, you can interact with the API by visiting the following endpoints:
+
+- **Main API endpoint**: `http://localhost:8000/`
+- **Swagger UI for API documentation**: `http://localhost:8000/docs`
+- **ReDoc UI for API documentation**: `http://localhost:8000/redoc``
 
 ## Running with Docker
 1. **Build the Docker Image**
