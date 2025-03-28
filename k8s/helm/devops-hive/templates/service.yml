@@ -1,9 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: devops-hive
+  name: {{ .Values.appName }}
 spec:
   selector:
-    app: devops-hive
+    app: {{ .Values.appName }}
   ports:
     - port: 80

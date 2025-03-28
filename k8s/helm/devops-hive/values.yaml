@@ -1,0 +1,7 @@
+appName: myapp
+namespace: dev
+replicas: 5
+memoryreq: "1000Mi"
+cpureq: "250m" 
+memorylim: "1500Mi"
+cpulim: "500m" 
