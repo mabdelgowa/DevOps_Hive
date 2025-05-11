@@ -4,7 +4,13 @@ metadata:
   name: devops-hive
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: devops-hive
   template:
+    metadata:
+      labels:
+        app: devops-hive
     spec:
       securityContext:
         appArmorProfile:
@@ -13,6 +19,7 @@ spec:
       containers:
         - name: devops-hive
           image: docker.io/mahmoudabdelgowad/devops_hive:latest
+          imagePullPolicy: IfNotPresent
           resources:
             requests:
               memory: "1000Mi"
@@ -23,8 +30,7 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
-            runAsUser: 1000
             seccompProfile:
               type: RuntimeDefault
           ports:
-            - containerPort: 80
+            - containerPort: 80        
