@@ -1,5 +1,7 @@
 name: Kubescape scanning for misconfigurations
-on: ["push"]
+on: 
+  push:
+    branches: [ "enhancement" ]
 jobs:
   kubescape:
     runs-on: ubuntu-latest

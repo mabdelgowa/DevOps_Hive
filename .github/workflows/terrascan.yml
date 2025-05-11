@@ -2,7 +2,7 @@ name: terrascan
 
 on:
   push:
-    branches: [ "enhancement" ] 
+    branches: [ "enhancement", "main" ] 
   pull_request:
     branches: [ "main" ]
 
