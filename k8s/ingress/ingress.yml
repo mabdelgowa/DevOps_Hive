@@ -15,18 +15,18 @@ spec:
               service:
                 name: devops-hive
                 port:
-                  number: 80
+                  number: 8080
           - pathType: Prefix
             path: /metrics
             backend:
               service:
                 name: devops-hive
                 port:
-                  number: 80
+                  number: 8080
           - pathType: Prefix
             path: /version
             backend:
               service:
                 name: devops-hive
                 port:
-                  number: 80
+                  number: 8080

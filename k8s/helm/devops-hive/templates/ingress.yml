@@ -15,18 +15,18 @@ spec:
               service:
                 name: {{ .Values.appName }}
                 port:
-                  number: 80
+                  number: 8080
           - pathType: Prefix
             path: /metrics
             backend:
               service:
                 name: {{ .Values.appName }}
                 port:
-                  number: 80
+                  number: 8080
           - pathType: Prefix
             path: /version
             backend:
               service:
                 name: {{ .Values.appName }}
                 port:
-                  number: 80
+                  number: 8080
