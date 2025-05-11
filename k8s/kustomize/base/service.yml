@@ -4,4 +4,4 @@ metadata:
   name: devops-hive
 spec:
   ports:
-    - port: 80
+    - port: 8080
