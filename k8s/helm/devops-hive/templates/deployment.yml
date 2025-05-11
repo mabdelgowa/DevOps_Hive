@@ -23,7 +23,7 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: {{ .Values.appName }}
-          image: docker.io/mahmoudabdelgowad/devops_hive:latest
+          image: docker.io/mahmoudabdelgowad/devops_hive:9
           resources:
             requests:
               memory: {{ .Values.memoryreq }}
@@ -35,4 +35,4 @@ spec:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
           ports:
-            - containerPort: 80
+            - containerPort: 8080

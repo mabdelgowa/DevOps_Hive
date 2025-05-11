@@ -21,12 +21,12 @@ spec:
       automountServiceAccountToken: false
       containers:
         - name: devops-hive
-          image: mahmoudabdelgowad/devops_hive:9
+          image: docker.io/mahmoudabdelgowad/devops_hive:9
           imagePullPolicy: IfNotPresent
           resources:
             requests:
-              memory: "1000Mi"
-              cpu: "250m"
+              memory: "1500Mi"
+              cpu: "5000m"
             limits:
               memory: "1500Mi"
               cpu: "500m"
@@ -35,4 +35,4 @@ spec:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
           ports:
-            - containerPort: 80
+            - containerPort: 8080
