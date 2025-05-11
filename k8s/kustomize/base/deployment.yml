@@ -31,6 +31,7 @@ spec:
               memory: "1500Mi"
               cpu: "500m"
           securityContext:
+            runAsNonRoot: true
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
           ports:
