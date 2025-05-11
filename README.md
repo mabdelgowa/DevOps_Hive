@@ -136,7 +136,7 @@ Once the app is running, you can interact with the API by visiting the following
 
 - **Main API endpoint**: `http://localhost:8000/`
 - **Swagger UI for API documentation**: `http://localhost:8000/docs`
-- **ReDoc UI for API documentation**: `http://localhost:8000/redoc``
+- **ReDoc UI for API documentation**: `http://localhost:8000/redoc`
 
 ## Running with Docker
 1. **Build the Docker Image**
