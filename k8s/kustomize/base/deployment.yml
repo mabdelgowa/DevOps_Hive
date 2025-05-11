@@ -13,7 +13,10 @@ spec:
         app: devops-hive
     spec:
       securityContext:
-        appArmorProfile:
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
           type: RuntimeDefault
       automountServiceAccountToken: false
       containers:
@@ -30,7 +33,5 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
-            seccompProfile:
-              type: RuntimeDefault
           ports:
-            - containerPort: 80        
+            - containerPort: 80
