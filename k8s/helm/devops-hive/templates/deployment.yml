@@ -15,6 +15,11 @@ spec:
       labels:
         app: {{ .Values.appName }}
     spec:
+      securityContext:
+        appArmorProfile:
+          type: RuntimeDefault
+        seccompProfile:
+          type: RuntimeDefault
       automountServiceAccountToken: false
       containers:
         - name: {{ .Values.appName }}
@@ -29,10 +34,9 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
-            runAsUser: 1000
-            seccompProfile:
-              type: RuntimeDefault
-            appArmorProfile:
-              type: RuntimeDefault
+              #            seccompProfile:
+              #              type: RuntimeDefault
+                #            appArmorProfile:
+                #              type: RuntimeDefault
           ports:
             - containerPort: 80
