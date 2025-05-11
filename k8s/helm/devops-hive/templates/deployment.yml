@@ -34,9 +34,5 @@ spec:
           securityContext:
             readOnlyRootFilesystem: true
             allowPrivilegeEscalation: false
-              #            seccompProfile:
-              #              type: RuntimeDefault
-                #            appArmorProfile:
-                #              type: RuntimeDefault
           ports:
             - containerPort: 80
