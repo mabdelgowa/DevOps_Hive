@@ -26,7 +26,7 @@ spec:
           resources:
             requests:
               memory: "1500Mi"
-              cpu: "5000m"
+              cpu: "500m"
             limits:
               memory: "1500Mi"
               cpu: "500m"
@@ -36,3 +36,4 @@ spec:
             allowPrivilegeEscalation: false
           ports:
             - containerPort: 8080
+
