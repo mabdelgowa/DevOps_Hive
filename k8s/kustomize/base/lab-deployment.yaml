@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: printer-app
+  namespace: default
+  annotations:
+    # ⚠️ This is the magic part. It matches the ConfigMap name.
+    configmap.reloader.stakater.com/reload: "my-app-config"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: printer-app
+  template:
+    metadata:
+      labels:
+        app: printer-app
+    spec:
+      containers:
+      - name: printer
+        image: alpine:latest
+        command: ["/bin/sh", "-c"]
+        # Print the Greeting every 5 seconds so you can see the change in logs
+        args:
+          - |
+            while true; do
+              echo "--- Application Output ---"
+              echo "Current Greeting: $GREETING"
+              echo "Log Level: $LOG_LEVEL"
+              sleep 5
+            done
+        envFrom:
+        - configMapRef:
+            name: my-app-config
