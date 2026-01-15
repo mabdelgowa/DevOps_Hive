@@ -5,4 +5,4 @@ metadata:
   namespace: default
 data:
   GREETING: "Hello from Version 1"
-  LOG_LEVEL: "CRITICAL"
+  LOG_LEVEL: "INFO"
